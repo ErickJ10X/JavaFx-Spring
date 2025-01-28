@@ -2,7 +2,6 @@ package com.prog.fx;
 
 import com.prog.fx.scenes.MenuScene;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
@@ -21,7 +20,7 @@ public class FxApplication extends Application {
 	}
 
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) {
 		mainStage = stage;
 		MenuScene menuScene = new MenuScene();
 		mainStage.setScene(menuScene.getScene());
