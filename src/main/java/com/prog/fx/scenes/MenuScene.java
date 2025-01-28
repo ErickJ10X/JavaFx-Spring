@@ -1,7 +1,6 @@
 package com.prog.fx.scenes;
 
 import com.prog.fx.FxApplication;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
