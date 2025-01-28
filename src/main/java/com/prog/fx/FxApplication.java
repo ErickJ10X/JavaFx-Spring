@@ -1,5 +1,6 @@
 package com.prog.fx;
 
+import com.prog.fx.scenes.MenuScene;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,21 +12,24 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class FxApplication extends Application {
 
+	public static Stage mainStage;
 	public static ConfigurableApplicationContext context;
 
 	public static void main(String[] args) {
+		context = SpringApplication.run(FxApplication.class, args);
 		launch();
-		SpringApplication.run(FxApplication.class, args);
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		context = SpringApplication.run(FxApplication.class);
-		FXMLLoader fxml = new FXMLLoader(getClass().getResource("/com/prog/fx/Main.fxml"));
-		fxml.setControllerFactory(context::getBean);
-		Scene scene = new Scene(fxml.load());
-		stage.setTitle("Tarea - Programacion N4");
-		stage.setScene(scene);
-		stage.show();
+		mainStage = stage;
+		MenuScene menuScene = new MenuScene();
+		mainStage.setScene(menuScene.getScene());
+		mainStage.setTitle("JavaFX with Spring Boot");
+		mainStage.show();
+	}
+
+	public static void changeScene(Scene scene) {
+		mainStage.setScene(scene);
 	}
 }
