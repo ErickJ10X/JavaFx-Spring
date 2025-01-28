@@ -8,15 +8,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @Component
-public class productoController implements Initializable {
+public class productoController {
 
     @Autowired
     private ProductoRepository productoRepository;
 
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void guardarProducto(Productos producto) {
+        productoRepository.save(producto);
     }
+
 }
