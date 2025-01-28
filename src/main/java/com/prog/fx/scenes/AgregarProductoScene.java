@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class AgregarProductoScene {
     public Scene getScene() {
         Button backButton = new Button("Back to Main Scene");
-        backButton.setOnAction(e -> FxApplication.changeScene(new MenuScene().getScene()));
+        backButton.setOnAction(_ -> FxApplication.changeScene(new MenuScene().getScene()));
 
         VBox layout = new VBox(10, backButton);
         return new Scene(layout, 800, 600);

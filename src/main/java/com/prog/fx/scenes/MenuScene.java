@@ -16,10 +16,10 @@ public class MenuScene {
         Button bActualizarProducto = new Button("Actualizar Producto");
         Button bEliminarProducto = new Button("Eliminar Producto");
 
-        bAgregarProductoEscena.setOnAction(e -> FxApplication.changeScene(new AgregarProductoScene().getScene()));
-        bVerListaProducto.setOnAction(e -> FxApplication.changeScene(new VerListaProducto().getScene()));
-        bActualizarProducto.setOnAction(e -> FxApplication.changeScene(new ActualizarProductoScene().getScene()));
-        bEliminarProducto.setOnAction(e -> FxApplication.changeScene(new EliminarProductoScene().getScene()));
+        bAgregarProductoEscena.setOnAction(_ -> FxApplication.changeScene(new AgregarProductoScene().getScene()));
+        bVerListaProducto.setOnAction(_ -> FxApplication.changeScene(new VerListaProducto().getScene()));
+        bActualizarProducto.setOnAction(_ -> FxApplication.changeScene(new ActualizarProductoScene().getScene()));
+        bEliminarProducto.setOnAction(_ -> FxApplication.changeScene(new EliminarProductoScene().getScene()));
 
         VBox layout = new VBox(10, bAgregarProductoEscena, bVerListaProducto, bActualizarProducto, bEliminarProducto);
         layout.setAlignment(Pos.CENTER);
