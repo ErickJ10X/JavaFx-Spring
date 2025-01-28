@@ -22,7 +22,6 @@ public class MenuScene {
         bEliminarProducto.setOnAction(_ -> FxApplication.changeScene(new EliminarProductoScene().getScene()));
 
         VBox layout = new VBox(10, bAgregarProductoEscena, bVerListaProducto, bActualizarProducto, bEliminarProducto);
-        layout.setAlignment(Pos.CENTER);
         return new Scene(layout, 800, 600);
     }
 }
