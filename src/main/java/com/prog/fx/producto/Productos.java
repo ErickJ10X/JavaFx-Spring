@@ -23,4 +23,9 @@ public class Productos {
     private int cantidad;
     private String descripcion;
 
+    public Productos(String nombre, int cantidad, String descripcion) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.descripcion = descripcion;
+    }
 }
