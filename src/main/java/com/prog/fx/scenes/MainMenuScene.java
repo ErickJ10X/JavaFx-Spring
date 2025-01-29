@@ -14,10 +14,12 @@ public class MainMenuScene {
         Button addProductButton = new Button("Add Product");
         Button updateProductButton = new Button("Update Product");
         Button deleteProductButton = new Button("Delete Product");
+        Button listProductsButton = new Button("List Products");
         addProductButton.setOnAction(e -> stage.setScene(new AddProductScene(stage).getScene()));
         updateProductButton.setOnAction(e -> stage.setScene(new UpdateProductScene(stage).getScene()));
         deleteProductButton.setOnAction(e -> stage.setScene(new DeleteProductScene(stage).getScene()));
-        layout.getChildren().addAll(addProductButton, updateProductButton, deleteProductButton);
+        listProductsButton.setOnAction(e -> stage.setScene(new ListProductsScene(stage).getScene()));
+        layout.getChildren().addAll(addProductButton, updateProductButton, deleteProductButton, listProductsButton);
         scene = new Scene(layout, 300, 200);
     }
 
