@@ -1,5 +1,6 @@
 package com.prog.fx.scenes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prog.fx.FxApplication;
 import com.prog.fx.producto.Producto;
@@ -47,10 +48,12 @@ public class ConfigScene {
         if (selectedFile != null) {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
-                Producto producto = objectMapper.readValue(selectedFile, Producto.class);
+                List<Producto> productos = objectMapper.readValue(selectedFile, new TypeReference<List<Producto>>() {});
                 ConfigurableApplicationContext context = FxApplication.context;
                 ProductoService productoService = context.getBean(ProductoService.class);
-                productoService.save(producto);
+                for (Producto producto : productos) {
+                    productoService.save(producto);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
