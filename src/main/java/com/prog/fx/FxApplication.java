@@ -1,8 +1,7 @@
 package com.prog.fx;
 
-import com.prog.fx.scenes.MenuScene;
+import com.prog.fx.scenes.LoadJsonScene;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +10,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class FxApplication extends Application {
 
-	public static Stage mainStage;
 	public static ConfigurableApplicationContext context;
 
 	public static void main(String[] args) {
@@ -21,14 +19,8 @@ public class FxApplication extends Application {
 
 	@Override
 	public void start(Stage stage) {
-		mainStage = stage;
-		MenuScene menuScene = new MenuScene();
-		mainStage.setScene(menuScene.getScene());
-		mainStage.setTitle("JavaFX with Spring Boot");
-		mainStage.show();
-	}
-
-	public static void changeScene(Scene scene) {
-		mainStage.setScene(scene);
+		stage.setTitle("Product Management");
+		stage.setScene(new LoadJsonScene(stage).getScene());
+		stage.show();
 	}
 }
