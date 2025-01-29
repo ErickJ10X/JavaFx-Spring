@@ -22,17 +22,16 @@ public class ListProductsScene {
         Button backButton = new Button("Back to Menu");
         backButton.setOnAction(e -> stage.setScene(new MainMenuScene(stage).getScene()));
 
-        // Fetch products and add to list view
         ConfigurableApplicationContext context = FxApplication.context;
         ProductoService productoService = context.getBean(ProductoService.class);
         ObservableList<String> items = FXCollections.observableArrayList();
         for (Producto producto : productoService.findAll()) {
-            items.add(producto.getNombre() + " - " + producto.getDescripcion());
+            items.add("Id: " + producto.getId() + " - Codigo: " + producto.getCodigo() + " - Nombre: " + producto.getNombre() + " - Cantidad: " + producto.getCantidad() + " - Descripcion: " + producto.getDescripcion());
         }
         listView.setItems(items);
 
         layout.getChildren().addAll(listView, backButton);
-        scene = new Scene(layout, 300, 200);
+        scene = new Scene(layout, 800, 800);
     }
 
     public Scene getScene() {

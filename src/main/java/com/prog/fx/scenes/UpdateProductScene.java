@@ -43,7 +43,7 @@ public class UpdateProductScene {
         ProductoService productoService = context.getBean(ProductoService.class);
         Long id = Long.parseLong(idField.getText());
         productoService.findById(id).ifPresent(producto -> {
-            producto.setCodigo(Long.parseLong(codigoField.getText()));
+            producto.setCodigo(Integer.parseInt(codigoField.getText()));
             producto.setNombre(nombreField.getText());
             producto.setCantidad(Integer.parseInt(cantidadField.getText()));
             producto.setDescripcion(descripcionField.getText());

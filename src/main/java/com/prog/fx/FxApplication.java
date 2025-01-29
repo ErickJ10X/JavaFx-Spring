@@ -1,6 +1,6 @@
 package com.prog.fx;
 
-import com.prog.fx.scenes.LoadJsonScene;
+import com.prog.fx.scenes.MainMenuScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +20,7 @@ public class FxApplication extends Application {
 	@Override
 	public void start(Stage stage) {
 		stage.setTitle("Product Management");
-		stage.setScene(new LoadJsonScene(stage).getScene());
+		stage.setScene(new MainMenuScene(stage).getScene());
 		stage.show();
 	}
 }
