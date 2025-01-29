@@ -31,7 +31,7 @@ public class UpdateProductScene {
         Button backButton = new Button("Back to Menu");
         backButton.setOnAction(e -> stage.setScene(new MainMenuScene(stage).getScene()));
         layout.getChildren().addAll(idField, codigoField, nombreField, cantidadField, descripcionField, updateButton, backButton);
-        scene = new Scene(layout, 300, 200);
+        scene = new Scene(layout, 800, 800);
     }
 
     public Scene getScene() {

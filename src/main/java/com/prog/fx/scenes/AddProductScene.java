@@ -29,7 +29,7 @@ public class AddProductScene {
         Button backButton = new Button("Back to Menu");
         backButton.setOnAction(e -> stage.setScene(new MainMenuScene(stage).getScene()));
         layout.getChildren().addAll(codigoField, nombreField, cantidadField, descripcionField, saveButton, backButton);
-        scene = new Scene(layout, 300, 200);
+        scene = new Scene(layout, 800, 800);
     }
 
     public Scene getScene() {

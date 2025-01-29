@@ -32,7 +32,7 @@ public class ConfigScene {
         backButton.setOnAction(e -> stage.setScene(new MainMenuScene(stage).getScene()));
 
         layout.getChildren().addAll(saveButton, exportButton, backButton);
-        scene = new Scene(layout, 300, 200);
+        scene = new Scene(layout, 800, 800);
     }
 
     public Scene getScene() {
