@@ -40,7 +40,7 @@ public class AddProductScene {
         ConfigurableApplicationContext context = FxApplication.context;
         ProductoService productoService = context.getBean(ProductoService.class);
         Producto producto = new Producto();
-        producto.setCodigo(Long.parseLong(codigoField.getText()));
+        producto.setCodigo(Integer.parseInt(codigoField.getText()));
         producto.setNombre(nombreField.getText());
         producto.setCantidad(Integer.parseInt(cantidadField.getText()));
         producto.setDescripcion(descripcionField.getText());
