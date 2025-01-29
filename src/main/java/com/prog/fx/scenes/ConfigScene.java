@@ -1,23 +1,17 @@
 package com.prog.fx.scenes;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prog.fx.FxApplication;
-import com.prog.fx.producto.Producto;
-import com.prog.fx.producto.ProductoService;
+import com.prog.fx.producto.ProductoController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConfigScene {
+
+    private ProductoController productoController;
 
     private Scene scene;
 
@@ -46,17 +40,7 @@ public class ConfigScene {
         File selectedFile = fileChooser.showOpenDialog(stage);
 
         if (selectedFile != null) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                List<Producto> productos = objectMapper.readValue(selectedFile, new TypeReference<List<Producto>>() {});
-                ConfigurableApplicationContext context = FxApplication.context;
-                ProductoService productoService = context.getBean(ProductoService.class);
-                for (Producto producto : productos) {
-                    productoService.save(producto);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            productoController.saveToList(selectedFile);
         }
     }
 
@@ -67,20 +51,7 @@ public class ConfigScene {
         File selectedFile = fileChooser.showSaveDialog(stage);
 
         if (selectedFile != null) {
-            ConfigurableApplicationContext context = FxApplication.context;
-            ProductoService productoService = context.getBean(ProductoService.class);
-            List<Producto> productos = productoService.findAll();
-
-            List<Producto> productosToExport = productos.stream()
-                    .map(p -> new Producto(p.getCodigo(), p.getNombre(), p.getCantidad(), p.getDescripcion()))
-                    .collect(Collectors.toList());
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                objectMapper.writeValue(selectedFile, productosToExport);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            productoController.exportToJson(selectedFile);
         }
     }
 }

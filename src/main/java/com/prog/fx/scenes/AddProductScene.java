@@ -1,16 +1,16 @@
 package com.prog.fx.scenes;
 
-import com.prog.fx.FxApplication;
-import com.prog.fx.producto.Producto;
-import com.prog.fx.producto.ProductoService;
+
+import com.prog.fx.producto.ProductoController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
 
 public class AddProductScene {
+
+    private ProductoController productoController;
 
     private Scene scene;
 
@@ -37,13 +37,10 @@ public class AddProductScene {
     }
 
     private void saveProduct(TextField codigoField, TextField nombreField, TextField cantidadField, TextField descripcionField) {
-        ConfigurableApplicationContext context = FxApplication.context;
-        ProductoService productoService = context.getBean(ProductoService.class);
-        Producto producto = new Producto();
-        producto.setCodigo(Integer.parseInt(codigoField.getText()));
-        producto.setNombre(nombreField.getText());
-        producto.setCantidad(Integer.parseInt(cantidadField.getText()));
-        producto.setDescripcion(descripcionField.getText());
-        productoService.save(producto);
+        int codigo = Integer.parseInt(codigoField.getText());
+        String nombre = nombreField.getText();
+        int cantidad = Integer.parseInt(cantidadField.getText());
+        String descripcion = descripcionField.getText();
+        productoController.saveProductOnList(codigo,nombre,cantidad,descripcion);
     }
 }
