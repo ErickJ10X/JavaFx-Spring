@@ -19,6 +19,10 @@ public class ProductoController {
 
     private List<Producto> productosList = new ArrayList<>();
 
+    public List<Producto> getProductsList() {
+        return productosList;
+    }
+
     public void saveToList(File selectedFile) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -26,6 +30,22 @@ public class ProductoController {
             productosList.addAll(productos);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void deleteFromList(int id) {
+        productosList.remove(id);
+    }
+
+    public void updateFromList(long id, int codigo, String nombre, String cantidad, String descripcion) {
+        for(Producto producto : productosList) {
+            if(producto.getId() == id) {
+                producto.setCodigo(codigo);
+                producto.setNombre(nombre);
+                producto.setCantidad(Integer.parseInt(cantidad));
+                producto.setDescripcion(descripcion);
+                break;
+            }
         }
     }
 

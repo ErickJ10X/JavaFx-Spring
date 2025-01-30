@@ -1,16 +1,16 @@
 package com.prog.fx.scenes;
 
-import com.prog.fx.FxApplication;
-import com.prog.fx.producto.ProductoService;
+
+import com.prog.fx.producto.ProductoController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
 
 public class DeleteProductScene {
 
+    private ProductoController controller;
     private Scene scene;
 
     public DeleteProductScene(Stage stage) {
@@ -30,9 +30,6 @@ public class DeleteProductScene {
     }
 
     private void deleteProduct(TextField idField) {
-        ConfigurableApplicationContext context = FxApplication.context;
-        ProductoService productoService = context.getBean(ProductoService.class);
-        Long id = Long.parseLong(idField.getText());
-        productoService.deleteById(id);
+        controller.deleteFromList(Integer.parseInt(idField.getText()));
     }
 }

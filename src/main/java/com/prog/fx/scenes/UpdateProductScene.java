@@ -1,16 +1,17 @@
 package com.prog.fx.scenes;
 
-import com.prog.fx.FxApplication;
-import com.prog.fx.producto.Producto;
-import com.prog.fx.producto.ProductoService;
+import com.prog.fx.producto.ProductoController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.springframework.context.ConfigurableApplicationContext;
+import lombok.Getter;
 
+@Getter
 public class UpdateProductScene {
+
+    private ProductoController productoController;
 
     private Scene scene;
 
@@ -34,20 +35,12 @@ public class UpdateProductScene {
         scene = new Scene(layout, 800, 800);
     }
 
-    public Scene getScene() {
-        return scene;
-    }
-
     private void updateProduct(TextField idField, TextField codigoField, TextField nombreField, TextField cantidadField, TextField descripcionField) {
-        ConfigurableApplicationContext context = FxApplication.context;
-        ProductoService productoService = context.getBean(ProductoService.class);
-        Long id = Long.parseLong(idField.getText());
-        productoService.findById(id).ifPresent(producto -> {
-            producto.setCodigo(Integer.parseInt(codigoField.getText()));
-            producto.setNombre(nombreField.getText());
-            producto.setCantidad(Integer.parseInt(cantidadField.getText()));
-            producto.setDescripcion(descripcionField.getText());
-            productoService.save(producto);
-        });
+        long id = Long.parseLong(idField.getText());
+        int codigo = Integer.parseInt(codigoField.getText());
+        String nombre = nombreField.getText();
+        String cantidad = cantidadField.getText();
+        String descripcion = descripcionField.getText();
+        productoController.updateFromList(id, codigo, nombre, cantidad, descripcion);
     }
 }
